@@ -34,4 +34,10 @@ var bioView = {
     }
 }
 
-bioView.init();
+var controller = {
+    init: function() {
+        bioView.init();
+    }
+}
+
+controller.init();
