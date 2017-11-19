@@ -17,16 +17,21 @@ var bio = {
     skills: ['Linux', 'JavaScript', 'Ruby', 'Windows Server Support', 'Desktop Support', 'Graphics Design'],
     biopic: 'images/fry.jpg',
     display: function() {
-        bioView.render();
+        bioView.init();
     }
 }
 
 var bioView = {
     init: function() {
+        bioName = HTMLheaderName.replace("%data%", bio.name);
+        $headerID = $('#header');
+
         this.render();
     },
 
-    render() {
-
+    render: function() {
+        $headerID.append(bioName);
     }
 }
+
+bioView.init();
