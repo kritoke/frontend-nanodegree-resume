@@ -9,8 +9,9 @@ var bio = {
     contacts: {
         mobile: '867-5301',
         email: 'notarealemail@somewhere.com',
-        github: 'https://github.com/kritoke',
+        github: 'kritoke',
         twitter: 'kritoke',
+        blog: 'http://matthewrhone.com',
         location: 'Lake Charles'
     },
     welcomeMessage: '',
@@ -23,14 +24,24 @@ var bio = {
 
 var bioView = {
     init: function() {
-        bioName = HTMLheaderName.replace("%data%", bio.name);
+        bioName = HTMLheaderName.replace('%data%', bio.name);
+        bioRole = HTMLheaderRole.replace('%data%', bio.role);
+        bioPhoto = HTMLbioPic.replace('%data%', bio.biopic);
+        bioMobile = HTMLmobile.replace('%data%', bio.contacts.mobile);
+        bioEmail = HTMLemail.replace('%data%', bio.contacts.email);
+        bioGithub = HTMLgithub.replace('%data%', bio.contacts.github);
+        bioTwitter = HTMLtwitter.replace('%data%', bio.contacts.twitter);
+        bioBlog = HTMLblog.replace('%data%', bio.contacts.blog);
+        bioLocation = HTMLlocation.replace('%data%', bio.contacts.location);
         $headerID = $('#header');
+        $topContacts = $('#topContacts');
 
         this.render();
     },
 
     render: function() {
-        $headerID.append(bioName);
+        $headerID.prepend(bioName + bioRole);
+        $topContacts.append(bioMobile + bioEmail + bioGithub + bioTwitter + bioBlog + bioLocation);
     }
 }
 
