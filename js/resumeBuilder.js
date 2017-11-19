@@ -14,8 +14,8 @@ var bio = {
         blog: 'http://matthewrhone.com',
         location: 'Lake Charles'
     },
-    welcomeMessage: '',
-    skills: ['Linux', 'JavaScript', 'Ruby', 'Windows Server Support', 'Desktop Support', 'Graphics Design'],
+    welcomeMessage: 'Lorem Ipsum',
+    skills: ['Linux', 'JavaScript', 'Ruby', 'Server/Desktop Support', 'Graphics Design'],
     biopic: 'images/fry.jpg',
     display: function() {
         bioView.init();
@@ -33,6 +33,8 @@ var bioView = {
         bioTwitter = HTMLtwitter.replace('%data%', bio.contacts.twitter);
         bioBlog = HTMLblog.replace('%data%', bio.contacts.blog);
         bioLocation = HTMLlocation.replace('%data%', bio.contacts.location);
+        bioWelcomeMessage = HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage);
+
         $headerID = $('#header');
         $topContacts = $('#topContacts');
 
@@ -41,7 +43,15 @@ var bioView = {
 
     render: function() {
         $headerID.prepend(bioName + bioRole);
+        $headerID.append(bioPhoto + bioWelcomeMessage + HTMLskillsStart);
         $topContacts.append(bioMobile + bioEmail + bioGithub + bioTwitter + bioBlog + bioLocation);
+
+        if (bio.skills.length > 0) {
+            bio.skills.forEach(function(skill) {
+                bioSkill = HTMLskills.replace('%data%', skill);
+                $('#skills').append(bioSkill);
+            });
+        }
     }
 }
 
