@@ -45,6 +45,36 @@ var bioView = {
     }
 }
 
+var education = {
+    schools: [{
+        name: 'Lamar University',
+        location: 'Beaumont, Texas',
+        degree: 'Bachelors of Business Admimistration',
+        majors: 'MIS, Finance',
+        dates: '2001-2006',
+        url: 'http://lamar.edu',
+        onlineCourses: [{
+            title: '',
+            school: '',
+            dates: '',
+            url: ''
+        }]
+    }],
+    display: function() {
+        educationView.init();
+    }
+}
+
+var educationView = {
+    init: function() {
+        this.render();
+    },
+
+    render: function() {
+
+    }
+}
+
 var controller = {
     init: function() {
         bioView.init();
