@@ -85,10 +85,11 @@ var educationView = {
     render: function() {
         if (controller.hasSchool || controller.hasOnlineSchool) {
             $("#education").append(HTMLschoolStart);
+            var $educationEntryClass = $('.education-entry');
 
-            if (controller.hasSchool)
+            // output schools
+            if (controller.hasSchool) {
                 education.schools.forEach(function(school) {
-                    var $educationEntryClass = $('.education-entry');
 
                     // make the university's website a link in the name if defined and add major type
                     $educationEntryClass.append(school.url != '' || school.url != undefined ? (HTMLschoolName.replace('#', school.url).replace('%data%', school.name) + HTMLschoolDegree.replace('%data%', school.degree)) : null);
@@ -97,6 +98,14 @@ var educationView = {
                     $educationEntryClass.append(HTMLschoolDates.replace('%data%', school.dates));
                     $educationEntryClass.append(HTMLschoolMajor.replace('%data%', school.majors));
                 });
+            }
+
+            // output online courses
+            if (controller.hasOnlineSchool) {
+                education.onlineCourses.forEach(function(onlineCourse) {
+
+                });
+            }
         }
     }
 }
