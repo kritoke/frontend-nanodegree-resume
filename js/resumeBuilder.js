@@ -77,6 +77,17 @@ var education = {
 
 var educationView = {
     init: function() {
+
+        if (education.schools.length > 0) {
+            $("#education").append(HTMLschoolStart);
+            education.schools.forEach(function(school) {
+                var $educationEntryClass = $('.education-entry');
+
+                // make the university's website a link in the name if defined
+                $educationEntryClass.append(school.url != '' || school.url != undefined ? (HTMLschoolName.replace('#', school.url).replace('%data%', school.name)) : null);
+                $educationEntryClass.append(HTMLschoolDates.replace('%data%', school.dates));
+            });
+        }
         this.render();
     },
 
@@ -88,6 +99,7 @@ var educationView = {
 var controller = {
     init: function() {
         bioView.init();
+        educationView.init();
     }
 }
 
