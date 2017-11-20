@@ -62,17 +62,19 @@ var education = {
         degree: 'Bachelors of Business Admimistration',
         majors: 'MIS, Finance',
         dates: '2001-2006',
-        url: 'http://lamar.edu',
-        onlineCourses: [{
-            title: '',
-            school: '',
-            dates: '',
-            url: ''
-        }]
+        url: 'http://lamar.edu'
     }],
+
+    onlineCourses: [{
+        title: 'Front End Nano Degree',
+        school: 'Udacity',
+        dates: '2017',
+        url: 'https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001'
+    }],
+
     display: function() {
         educationView.init();
-    }
+    },
 }
 
 var educationView = {
@@ -81,18 +83,20 @@ var educationView = {
     },
 
     render: function() {
-        if (education.schools.length > 0) {
+        if (controller.hasSchool || controller.hasOnlineSchool) {
             $("#education").append(HTMLschoolStart);
-            education.schools.forEach(function(school) {
-                var $educationEntryClass = $('.education-entry');
 
-                // make the university's website a link in the name if defined and add major type
-                $educationEntryClass.append(school.url != '' || school.url != undefined ? (HTMLschoolName.replace('#', school.url).replace('%data%', school.name) + HTMLschoolDegree.replace('%data%', school.degree)) : null);
+            if (controller.hasSchool)
+                education.schools.forEach(function(school) {
+                    var $educationEntryClass = $('.education-entry');
 
-                $educationEntryClass.append(HTMLschoolLocation.replace('%data%', school.location));
-                $educationEntryClass.append(HTMLschoolDates.replace('%data%', school.dates));
-                $educationEntryClass.append(HTMLschoolMajor.replace('%data%', school.majors));
-            });
+                    // make the university's website a link in the name if defined and add major type
+                    $educationEntryClass.append(school.url != '' || school.url != undefined ? (HTMLschoolName.replace('#', school.url).replace('%data%', school.name) + HTMLschoolDegree.replace('%data%', school.degree)) : null);
+
+                    $educationEntryClass.append(HTMLschoolLocation.replace('%data%', school.location));
+                    $educationEntryClass.append(HTMLschoolDates.replace('%data%', school.dates));
+                    $educationEntryClass.append(HTMLschoolMajor.replace('%data%', school.majors));
+                });
         }
     }
 }
@@ -101,6 +105,16 @@ var controller = {
     init: function() {
         bioView.init();
         educationView.init();
+    },
+
+    // check if school is defined in education
+    hasSchool: function() {
+        return education.schools.length > 0 ? true : false;
+    },
+
+    // check if online school is defined in education
+    hasOnlineSchool: function() {
+        return education.onlineCourses.length > 0 ? true : false;
     }
 }
 
