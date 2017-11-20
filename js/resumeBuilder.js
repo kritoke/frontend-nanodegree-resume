@@ -83,9 +83,14 @@ var educationView = {
             education.schools.forEach(function(school) {
                 var $educationEntryClass = $('.education-entry');
 
+
                 // make the university's website a link in the name if defined
-                $educationEntryClass.append(school.url != '' || school.url != undefined ? (HTMLschoolName.replace('#', school.url).replace('%data%', school.name)) : null);
+                $educationEntryClass.append(school.url != '' || school.url != undefined ? (HTMLschoolName.replace('#', school.url).replace('%data%', school.name) + HTMLschoolDegree.replace('%data%', school.degree)) : null);
+                $educationEntryClass.append(HTMLschoolLocation.replace('%data%', school.location));
+
                 $educationEntryClass.append(HTMLschoolDates.replace('%data%', school.dates));
+
+                $educationEntryClass.append(HTMLschoolMajor.replace('%data%', school.majors));
             });
         }
         this.render();
