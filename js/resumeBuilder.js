@@ -84,7 +84,7 @@ var educationView = {
 
     render: function() {
         if (controller.hasSchool || controller.hasOnlineSchool) {
-            $("#education").append(HTMLschoolStart);
+            $('#education').append(HTMLschoolStart);
             var $educationEntryClass = $('.education-entry');
 
             // output schools
@@ -102,8 +102,11 @@ var educationView = {
 
             // output online courses
             if (controller.hasOnlineSchool) {
+                $educationEntryClass.append(HTMLonlineClasses);
                 education.onlineCourses.forEach(function(onlineCourse) {
-
+                    $educationEntryClass.append(HTMLonlineTitle.replace('%data%', onlineCourse.title) + HTMLonlineSchool.replace('%data%', onlineCourse.school));
+                    $educationEntryClass.append(HTMLonlineDates.replace('%data%', onlineCourse.dates));
+                    $educationEntryClass.append(HTMLonlineURL.replace('%data%', onlineCourse.url));
                 });
             }
         }
