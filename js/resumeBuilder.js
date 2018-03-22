@@ -68,7 +68,7 @@ var education = {
     onlineCourses: [{
         title: 'Front End Nano Degree',
         school: 'Udacity',
-        dates: '2017',
+        dates: '2017-2018',
         url: 'https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001'
     }],
 
@@ -134,7 +134,10 @@ var workView = {
             var $workEntryClass = $('.work-entry');
 
             work.jobs.forEach(function(job) {
-                $workEntryClass.append(HTMLworkEmployer.replace('%data%', job.employer));
+                $workEntryClass.append(HTMLworkEmployer.replace('%data%', job.employer) + HTMLworkTitle.replace('%data%', job.title));
+                $workEntryClass.append(HTMLworkDates.replace('%data%', job.dates));
+                $workEntryClass.append(HTMLworkLocation.replace('%data%', job.location));
+                $workEntryClass.append(HTMLworkDescription.replace('%data%', job.description));
             });
         }
     }
