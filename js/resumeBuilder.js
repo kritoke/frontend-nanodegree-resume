@@ -20,7 +20,7 @@ var bio = {
     display: function() {
         bioView.init();
     }
-}
+};
 
 var bioView = {
     init: function() {
@@ -53,7 +53,7 @@ var bioView = {
             });
         }
     }
-}
+};
 
 var education = {
     schools: [{
@@ -75,7 +75,7 @@ var education = {
     display: function() {
         educationView.init();
     },
-}
+};
 
 var educationView = {
     init: function() {
@@ -92,7 +92,7 @@ var educationView = {
                 education.schools.forEach(function(school) {
 
                     // make the university's website a link in the name if defined and add major type
-                    $educationEntryClass.append(school.url != '' || school.url != undefined ? (HTMLschoolName.replace('#', school.url).replace('%data%', school.name) + HTMLschoolDegree.replace('%data%', school.degree)) : null);
+                    $educationEntryClass.append(school.url != '' || school.url !== undefined ? (HTMLschoolName.replace('#', school.url).replace('%data%', school.name) + HTMLschoolDegree.replace('%data%', school.degree)) : null);
 
                     $educationEntryClass.append(HTMLschoolLocation.replace('%data%', school.location));
                     $educationEntryClass.append(HTMLschoolDates.replace('%data%', school.dates));
@@ -111,12 +111,40 @@ var educationView = {
             }
         }
     }
-}
+};
+
+var work = {
+    jobs: [{
+        employer: 'Structure (X)',
+        title: 'Systems Technician',
+        dates: 'February 2012 to Current',
+        location: 'Lake Charles, Louisiana',
+        description: 'Desktop, Server, Networking Support.  Manage MSP related services and infrastructure. Minor HTML, ASP.Net, and Javascript Website updates.'
+    }]
+};
+
+var workView = {
+    init: function() {
+        this.render();
+    },
+
+    render: function() {
+        if (controller.hasWork) {
+            $('#workExperience').append(HTMLworkStart);
+            var $workEntryClass = $('.work-entry');
+
+            work.jobs.forEach(function(job) {
+                $workEntryClass.append(HTMLworkEmployer.replace('%data%', job.employer));
+            });
+        }
+    }
+};
 
 var controller = {
     init: function() {
         bioView.init();
         educationView.init();
+        workView.init();
     },
 
     // check if school is defined in education
@@ -127,7 +155,12 @@ var controller = {
     // check if online school is defined in education
     hasOnlineSchool: function() {
         return education.onlineCourses.length > 0 ? true : false;
+    },
+
+    // check if work is defined
+    hasWork: function() {
+        return work.jobs.length > 0 ? true : false;
     }
-}
+};
 
 controller.init();
