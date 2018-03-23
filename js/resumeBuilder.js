@@ -115,12 +115,27 @@ var educationView = {
 
 var work = {
     jobs: [{
-        employer: 'Structure (X)',
-        title: 'Systems Technician',
-        dates: 'February 2012 to Current',
-        location: 'Lake Charles, Louisiana',
-        description: 'Desktop, Server, Networking Support.  Manage MSP related services and infrastructure. Minor HTML, ASP.Net, and Javascript Website updates.'
-    }]
+            employer: 'Structure (X)',
+            title: 'Systems Technician',
+            dates: 'February 2012 to Current',
+            location: 'Lake Charles, Louisiana',
+            description: 'Desktop, Server, Networking Support.  Manage MSP related services and infrastructure. Minor HTML, ASP.Net, and Javascript Website updates.'
+        },
+        {
+            employer: 'Smart Source Technical Staffing',
+            title: 'Deployment Technician',
+            dates: 'December 2011',
+            location: 'Westlake, Louisiana',
+            description: 'Work on the Windows 7 Pilot Project, migrating Windows XP PCs to Windows 7.'
+        },
+        {
+            employer: 'Mahachulalongkornrajavidyalaya University',
+            title: 'ESL Teacher',
+            dates: 'April 2011 to October 2011',
+            location: 'Wang Noi, Ayutthaya, Thailand',
+            description: 'Taught English to Thai Nationals.'
+        }
+    ]
 };
 
 var workView = {
