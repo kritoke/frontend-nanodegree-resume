@@ -135,7 +135,10 @@ var work = {
             location: 'Wang Noi, Ayutthaya, Thailand',
             description: 'Taught English to Thai Nationals.'
         }
-    ]
+    ],
+    display: function() {
+        workView.init();
+    }
 };
 
 var workView = {
@@ -158,11 +161,39 @@ var workView = {
     }
 };
 
+var projects = {
+    projects: [{
+        title: '',
+        dates: '',
+        location: '',
+        images: ['', '']
+    }],
+
+    display: function() {
+        projectsView.init();
+    }
+};
+
+var projectsView = {
+    init: function() {
+        this.render();
+    },
+
+    render: function() {
+        if (controller.hasProjects) {
+            $('#projects').append(HTMLprojectStart);
+            var $projectEntryClass = $('.project-entry');
+        }
+    }
+};
+
+
 var controller = {
     init: function() {
         bioView.init();
         educationView.init();
         workView.init();
+        projectsView.init();
     },
 
     // check if school is defined in education
@@ -178,6 +209,11 @@ var controller = {
     // check if work is defined
     hasWork: function() {
         return work.jobs.length > 0 ? true : false;
+    },
+
+    // check if projects is defined
+    hasProjects: function() {
+        return projects.projects.length > 0 ? true : false;
     }
 };
 
