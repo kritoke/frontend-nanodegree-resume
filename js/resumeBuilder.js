@@ -229,3 +229,4 @@ var controller = {
 };
 
 controller.init();
+$('#mapDiv').append(googleMap);
