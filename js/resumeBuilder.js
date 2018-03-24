@@ -163,10 +163,10 @@ var workView = {
 
 var projects = {
     projects: [{
-        title: '',
-        dates: '',
-        location: '',
-        images: ['', '']
+        title: "It's All Code",
+        dates: 'April 2017 to May 2017',
+        description: 'Written in the Sinatra framework in Ruby, it takes a youtube url and parses information and displays it in a video grid.',
+        images: ['images/walkthrough.gif']
     }],
 
     display: function() {
@@ -183,6 +183,16 @@ var projectsView = {
         if (controller.hasProjects) {
             $('#projects').append(HTMLprojectStart);
             var $projectEntryClass = $('.project-entry');
+
+            projects.projects.forEach(function(project) {
+                $projectEntryClass.append(HTMLprojectTitle.replace('%data%', project.title));
+                $projectEntryClass.append(HTMLprojectDates.replace('%data%', project.dates));
+                $projectEntryClass.append(HTMLprojectDescription.replace('%data%', project.description));
+                project.images.forEach(function(image) {
+                    $projectEntryClass.append(HTMLprojectImage.replace('%data%', image));
+
+                });
+            });
         }
     }
 };
