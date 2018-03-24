@@ -68,7 +68,7 @@ var education = {
     onlineCourses: [{
         title: 'Front End Nano Degree',
         school: 'Udacity',
-        dates: '2017-2018',
+        dates: '2017 to 2018',
         url: 'https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001'
     }],
 
@@ -93,7 +93,6 @@ var educationView = {
 
                     // make the university's website a link in the name if defined and add major type
                     $educationEntryClass.append(school.url != '' || school.url !== undefined ? (HTMLschoolName.replace('#', school.url).replace('%data%', school.name) + HTMLschoolDegree.replace('%data%', school.degree)) : null);
-
                     $educationEntryClass.append(HTMLschoolLocation.replace('%data%', school.location));
                     $educationEntryClass.append(HTMLschoolDates.replace('%data%', school.dates));
                     $educationEntryClass.append(HTMLschoolMajor.replace('%data%', school.majors));
@@ -102,11 +101,14 @@ var educationView = {
 
             // output online courses
             if (controller.hasOnlineSchool) {
-                $educationEntryClass.append(HTMLonlineClasses);
+                $('#education').append(HTMLonlineClasses);
+                $('#education').append(HTMLschoolStart);
+
+                var $educationEntryClassLast = $('.education-entry:last');
                 education.onlineCourses.forEach(function(onlineCourse) {
-                    $educationEntryClass.append(HTMLonlineTitle.replace('%data%', onlineCourse.title) + HTMLonlineSchool.replace('%data%', onlineCourse.school));
-                    $educationEntryClass.append(HTMLonlineDates.replace('%data%', onlineCourse.dates));
-                    $educationEntryClass.append(HTMLonlineURL.replace('%data%', onlineCourse.url));
+                    $educationEntryClassLast.append(HTMLonlineTitle.replace('%data%', onlineCourse.title) + HTMLonlineSchool.replace('%data%', onlineCourse.school));
+                    $educationEntryClassLast.append(HTMLonlineDates.replace('%data%', onlineCourse.dates));
+                    $educationEntryClassLast.append(HTMLonlineURL.replace('%data%', onlineCourse.url));
                 });
             }
         }
@@ -190,7 +192,6 @@ var projectsView = {
                 $projectEntryClass.append(HTMLprojectDescription.replace('%data%', project.description));
                 project.images.forEach(function(image) {
                     $projectEntryClass.append(HTMLprojectImage.replace('%data%', image));
-
                 });
             });
         }
